@@ -1,0 +1,44 @@
+package ui;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Window extends JFrame {
+	private String title;
+	private JPanel leftPanel;
+	private JPanel rightPanel;
+	public Window(String title) {
+		super(title);
+		this.title = title;
+		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+		this.setSize(new Dimension(1200, 700));
+		this.setLocationRelativeTo(this);
+		this.setLayout(null);
+		this.setVisible(true);
+		createPanels();
+	}
+	public void createPanels() {
+		leftPanel = new JPanel();
+		rightPanel = new JPanel();
+		leftPanel.setSize(new Dimension(600, 500));
+		leftPanel.setLocation(0, 0);
+		Color color = new Color(125, 229, 237);
+		leftPanel.setBackground(color);
+		this.add(leftPanel);
+		
+		rightPanel.setSize(new Dimension(400, 500));
+		rightPanel.setLocation(600, 0);
+		rightPanel.setBackground(Color.BLUE);
+		this.add(rightPanel);
+	}
+	
+	public void createLabels() {
+		JLabel label = new JLabel("Te ayudamos en todo");
+		label.setBounds(130, 20, (this.rightPanel.getWidth() - label.getWidth()) / 2, 100);
+		this.rightPanel.add(label);
+	}
+}

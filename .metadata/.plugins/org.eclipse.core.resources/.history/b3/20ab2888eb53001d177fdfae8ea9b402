@@ -1,0 +1,107 @@
+package ui;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import helpers.Helpers;
+
+public class Window extends JFrame {
+	private static final String JTextPasswordField = null;
+	private String title;
+	private JPanel leftPanel;
+	private JPanel rightPanel;
+	//decorator
+	private Font titleFont, mainFont, subTitleFont;
+	public Window(String title) {
+		super(title);
+		this.title = title;
+		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+		this.setSize(new Dimension(1200, 700));
+		this.setLocationRelativeTo(this);
+		this.setLayout(null);
+		this.setVisible(true);
+		createPanels();
+		createLabels();
+		createTextField();
+		createComboBox();
+		createButton();
+	}
+	public void createPanels() { 
+		leftPanel = new JPanel();
+		rightPanel = new JPanel();
+		leftPanel.setSize(new Dimension(600, 600));
+		leftPanel.setLocation(0, 0);
+		Color color = new Color(125, 229, 237);
+		leftPanel.setBackground(color);
+		this.add(leftPanel);
+		
+		rightPanel.setSize(new Dimension(400, 600));
+		rightPanel.setLocation(600, 0);
+		rightPanel.setBackground(Color.BLUE);
+		rightPanel.setLayout(null);
+		this.add(rightPanel);
+	}
+	public void createDecorators() {
+		mainFont = new Font("Rockwell Extra Bold", Font.PLAIN, 20);
+		titleFont = new Font("Calibri (Cuerpo)", Font.BOLD, 17);
+		subTitleFont = new Font("Forte", Font.PLAIN, 13);
+
+	}
+	
+	public void createLabels() {
+		JLabel label = new JLabel("Te ayudamos en todo");
+		label.setBounds(130, 20, Helpers.getCenterPosition(this.rightPanel, label), 100);
+		label.setForeground(Color.WHITE); 
+		this.rightPanel.add(label);
+	}
+	public void createTextField() {
+		JTextField text  = new JTextField("Username name");
+		text.setSize(new Dimension(300, 50));
+		text.setLocation(Helpers.getCenterPosition(this.rightPanel, text), 300);
+		//text.setBounds(Helpers.getCenterPosition(this.rightPanel, text), 300, 300, 50);
+		text.setForeground(Color.DARK_GRAY);
+		text.setBackground(Color.WHITE);
+		text.setCaretColor(Color.BLUE);
+		text.setHorizontalAlignment(SwingConstants.CENTER);
+		this.rightPanel.add(text);
+		
+		JPasswordField password = new JPasswordField("Password");
+		password.setSize(new Dimension(300, 50));
+		password.setLocation(Helpers.getCenterPosition(this.rightPanel, text), 360);
+		password.setForeground(Color.DARK_GRAY);
+		password.setCaretColor(Color.BLUE);
+		password.setHorizontalAlignment(SwingConstants.CENTER);
+		this.rightPanel.add(password);
+	}
+	public void createComboBox() {
+		JComboBox combo = new JComboBox<String>();
+		combo.addItem("User");
+		combo.addItem("Cashier");
+		combo.addItem("Admin");
+		combo.setSize(300, 30);
+		combo.setLocation(Helpers.getCenterPosition(this.rightPanel, combo), 420);
+		combo.setForeground(Color.DARK_GRAY);
+		combo.setBackground(Color.WHITE);
+		JLabel label = (JLabel)combo.getRenderer();
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		this.rightPanel.add(combo);
+	}
+	public void createButton() {
+		JButton button = new JButton("Login");
+		button.setSize(new Dimension(300, 50));
+		button.setLocation(Helpers.getCenterPosition(this.rightPanel, button), 480);
+		button.setForeground(Color.BLUE);
+		button.setBackground(Color.WHITE);
+		this.rightPanel.add(button);
+	}
+}

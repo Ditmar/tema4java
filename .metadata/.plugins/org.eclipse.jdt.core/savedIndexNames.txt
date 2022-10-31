@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/Users/ditmarcastroangulo/tema4/.metadata/.plugins/org.eclipse.jdt.core
+1029770060.index
+2164045924.index
+1865797976.index
