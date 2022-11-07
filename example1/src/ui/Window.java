@@ -21,8 +21,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 import helpers.Helpers;
 
@@ -61,6 +63,8 @@ public class Window extends JFrame implements ActionListener {
 		createButton();
 		createCheckButton();
 		createLabelWithImages(hash.get("rick"));
+		createTable();	
+		root.repaint();
 	}
 	public void createPanels() { 
 		leftPanel = new JPanel();
@@ -178,12 +182,28 @@ public class Window extends JFrame implements ActionListener {
 		leftPanel.add(labelImage);
 	}
 	
+	public void createTable () {
+		 JTable table = new JTable();
+		 table.setSize(new Dimension(300, 200));
+		 table.setLocation(10, 110);
+		 DefaultTableModel model = (DefaultTableModel)table.getModel();
+		 model.addColumn("id");
+		 model.addColumn("name");
+		 model.addColumn("LastName");
+		 model.addColumn("Grade");
+		 model.addRow(new Object[] {"0001", "Carlos", "Lopez", "10"});
+		 model.addRow(new Object[] {"0002", "Juan", "Vargas", "11"});
+		 model.addRow(new Object[] {"0003", "Maria", "Duran", "16"});
+		 table.updateUI();
+		 rightPanel.add(table);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		ListWindows win = new ListWindows("lista");
 		win.addActionHandlerSelectedEvent((name) -> {
-			leftPanel.removeAll();
+			leftPanel.remove(labelImage);
 			createLabelWithImages(hash.get(name));
 			root.repaint();
 		

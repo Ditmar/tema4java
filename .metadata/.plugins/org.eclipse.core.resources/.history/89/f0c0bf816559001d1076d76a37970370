@@ -1,9 +1,0 @@
-package ui;
-
-import javax.swing.JFrame;
-
-public class ListWindows extends JFrame{
-	public ListWindows () {
-		
-	}
-}
